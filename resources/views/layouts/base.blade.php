@@ -14,11 +14,19 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css"
+    rel="stylesheet"
+  />
     <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
     @livewireStyles
 
     <!-- Scripts -->
-
+    <script src="
+    https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+    "></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ url(mix('js/app.js')) }}"></script>
     <script src="/alpine.js"></script>
     <!-- CSRF Token -->
@@ -40,16 +48,18 @@
         [x-cloak] {
             display: none;
         }
-
     </style>
 </head>
 
 <body class="min-w-screen">
     @yield('body')
 
-    @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-    </script>
+    @livewireScripts    <script src="
+    https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+    "></script>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
     <x-livewire-alert::scripts />
@@ -62,5 +72,15 @@
         <livewire:play-waiting-player />
     @endauth
 </body>
+<script>
+    $(document).ready(function() {
+        $('.multi-select').select2();
+    });
+
+    new TomSelect('#select-role', {
+        maxItems: 3,
+      });
+    
+</script>
 
 </html>

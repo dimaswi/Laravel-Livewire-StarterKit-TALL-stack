@@ -28,7 +28,7 @@ class ProfileLivewire extends Component
 
     public $phone;
 
-    public $email;
+    public $username;
 
     use WithFileUploads;
 
@@ -46,7 +46,7 @@ class ProfileLivewire extends Component
             return abort(403);
         }
         $this->phone = $this->user->phone;
-        $this->email = $this->user->email;
+        $this->username = $this->user->username;
         $this->qvapay = $this->user->qvapay;
     }
 
@@ -59,9 +59,9 @@ class ProfileLivewire extends Component
             $current = Hash::make($this->newPass);
             $this->user->password = $current;
             $this->user->update();
-            $this->sendAlert('success', 'Contraseña actualizada', 'top-end');
+            $this->sendAlert('success', 'Berhasil diupdate!!', 'top-end');
         } else {
-            $this->sendAlert('error', 'Contraseña actual incorrecta', 'top-end');
+            $this->sendAlert('error', 'Gagal diupdate!!', 'top-end');
 
             return;
         }
@@ -69,9 +69,6 @@ class ProfileLivewire extends Component
 
     public function updatedAvatar()
     {
-        $this->validate([
-            'avatar' => 'max:9500kb'
-        ]);
 
         $user = Auth::user();
 
@@ -100,12 +97,12 @@ class ProfileLivewire extends Component
     public function updatedEmail()
     {
         $this->validate([
-            'email' => 'email'
+            'username' => 'text'
         ]);
 
         $user = Auth::user();
 
-        $user->email = $this->email;
+        $user->username = $this->username;
 
         $user->update();
         $this->sendAlert('success', 'Email actualizado correctamente', 'top-end');

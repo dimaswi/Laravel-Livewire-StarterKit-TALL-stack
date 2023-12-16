@@ -83,6 +83,7 @@
             </div>
 
         </div>
+        
 
         @if (Auth::user()->staff || (Auth::user()->admin && $setting->module_stats_system))
             <livewire:stats-general-livewire />

@@ -89,12 +89,12 @@
             </div>
         </div>
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start   sm:pt-5">
-            <label for="email" class="block text-sm font-medium  dark:text-gray-300 text-gray-700 sm:mt-px sm:pt-2">
-                Email
+            <label for="username" class="block text-sm font-medium  dark:text-gray-300 text-gray-700 sm:mt-px sm:pt-2">
+                Username
             </label>
             <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg flex rounded-md shadow-sm">
-                    <input type="text" wire:model.lazy="email"
+                    <input type="text" wire:model.lazy="username"
                         class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
                 </div>
             </div>

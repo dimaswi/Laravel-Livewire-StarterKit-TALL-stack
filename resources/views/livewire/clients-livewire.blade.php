@@ -7,6 +7,9 @@
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             {{ __('messages.clients') }}
         </h2>
+
+        @livewire('users.user-index')
+
         <input type="text" wire:model="search" placeholder="    {{ __('messages.search_clients') }}"
             class="block w-full my-3 text-sm focus:border-purple-400 focus:outline-none dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
         <!-- New Table -->
@@ -17,7 +20,7 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3"> {{ __('messages.name') }}</th>
-                            <th class="px-4 py-3">Email</th>
+                            <th class="px-4 py-3">Username</th>
                             <th class="px-4 py-3"> {{ __('messages.phone') }}</th>
                             <th class="px-4 py-3">{{ __('messages.company') }}</th>
                             <th class="px-4 py-3">{{ __('messages.action') }}</th>
@@ -42,7 +45,7 @@
 
                                 <td class="px-4 py-3 text-xs">
                                     <span>
-                                        {{ $user->email }}
+                                        {{ $user->username }}
                                     </span>
                                 </td>
                                 <td class="px-4 py-3 text-sm">

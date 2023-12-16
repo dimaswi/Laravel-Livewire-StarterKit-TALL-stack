@@ -5,20 +5,13 @@
 <div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <a href="/">
-            <img class="mx-auto shadow-lg rounded-b-3xl" style="width: 277px;height: auto;" src="{{App\Models\Setting::first()->logo}}" alt="Logo de {{config('app.name')}}">
+            <img class="mx-auto shadow-lg rounded-b-3xl" style="width: 150px;height: auto;" src="{{App\Models\Setting::first()->logo}}" alt="Logo de {{config('app.name')}}">
         </a>
 
         <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
             {{ __('messages.login') }}
         </h2>
-        @if (Route::has('register'))
-            <p class="mt-2 text-sm text-center text-gray-600 leading-5 max-w">
-                Or
-                <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                    {{ __('messages.new_account') }}
-                </a>
-            </p>
-        @endif
+
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -26,15 +19,15 @@
             <form wire:submit.prevent="authenticate">
                 <x-honeypot livewire-model="extraFields" />
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-                        Email
+                    <label for="username" class="block text-sm font-medium text-gray-700 leading-5">
+                        Username
                     </label>
 
                     <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="email" id="email" name="email" type="email" required autofocus class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
+                        <input wire:model.lazy="username" id="username" name="username" type="username" required autofocus class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('username') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror" />
                     </div>
 
-                    @error('email')
+                    @error('username')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>

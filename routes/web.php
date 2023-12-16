@@ -24,25 +24,20 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 */
 
 //General
-Route::get('/', App\Http\Livewire\LandingLivewire::class)->name('landing');
+Route::get('/',function () {
+    return redirect('/login');
+});
 Route::get('/home', App\Http\Livewire\HomeLivewire::class)->name('home')->middleware('auth');
 Route::get('/profile/{userID}', App\Http\Livewire\ProfileLivewire::class)->name('profile');
 Route::get('/stats', App\Http\Livewire\StatsLivewire::class)->name('stats')->middleware('auth');
 
-//Invoices
-Route::get('/home/invoices', App\Http\Livewire\InvoicesLivewire::class)->name('agency_invoices')->middleware('auth');
-Route::get('/invoices/{invoiceId}', App\Http\Livewire\ViewInvoiceLivewire::class)->name('view_invoice')->middleware('auth');
-
-//Orders
-Route::get('/home/orders', App\Http\Livewire\OrdersLivewire::class)->name('orders')->middleware('auth');
-
 //Admin - Clients
-Route::get('/dmin/clients', App\Http\Livewire\ClientsLivewire::class)->name('agency_clients')->middleware('auth');
-Route::get('/admin/setting', App\Http\Livewire\AdminSettingLivewire::class)->name('agency_setting')->middleware('auth');
-Route::get('/admin/services', App\Http\Livewire\AdminServicesLivewire::class)->name('admin_services')->middleware('admin');
-Route::get('/admin/orders', App\Http\Livewire\AdminOrderLivewire::class)->name('admin_order')->middleware('admin');
+Route::get('/admin/users', App\Http\Livewire\Master\Users::class)->name('admin_users')->middleware('auth');
+Route::get('/admin/unit', App\Http\Livewire\Master\KepalaUnit::class)->name('admin_unit')->middleware('admin');
+Route::get('/admin/bagian', App\Http\Livewire\Master\KepalaBagian::class)->name('admin_bagian')->middleware('admin');
+Route::get('/admin/role', App\Http\Livewire\Master\Roles::class)->name('admin_roles')->middleware('admin');
+Route::get('/admin/permission', App\Http\Livewire\Master\Permissions::class)->name('admin_permission')->middleware('admin');
 Route::get('/notifications', App\Http\Livewire\CentralNotificationsLivewire::class)->name('central_notifications')->middleware('auth');
-Route::get('/tickets', App\Http\Livewire\TicketsLivewire::class)->name('tickets')->middleware('auth');
 
 Route::get('/exit', function () {
     Auth::logout();
@@ -53,9 +48,6 @@ Route::get('/exit', function () {
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
         ->name('login');
-
-    Route::get('register', Register::class)
-        ->name('register');
 });
 
 Route::get('password/reset', Email::class)

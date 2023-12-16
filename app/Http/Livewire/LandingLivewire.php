@@ -11,11 +11,13 @@ class LandingLivewire extends Component
 
     public function render()
     {
+        
         return view('livewire.landing-livewire')->extends('layouts.appLanding');
     }
 
     public function mount()
     {
         $this->setting = Setting::getAllSettings();
+
     }
 }

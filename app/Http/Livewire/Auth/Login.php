@@ -14,7 +14,7 @@ class Login extends Component
     public HoneypotData $extraFields;
 
     /** @var string */
-    public $email = '';
+    public $username = '';
 
     /** @var string */
     public $password = '';
@@ -34,13 +34,13 @@ class Login extends Component
         $this->protectAgainstSpam(); // if is spam, will abort the request
 
         $this->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
             'recaptcha' => config('captcha.secret') ? 'required|captcha' : 'nullable',
         ]);
 
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            $this->addError('email', trans('auth.failed'));
+        if (! Auth::attempt(['username' => $this->username, 'password' => $this->password], $this->remember)) {
+            $this->addError('username', trans('auth.failed'));
 
             return;
         }

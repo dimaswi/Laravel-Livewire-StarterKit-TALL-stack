@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html  
-    x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
-    x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
-    x-bind:class="{ 'dark': darkMode }"
-    lang="en">
+<html x-data="{ darkMode: localStorage.getItem('dark') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('dark', val))" x-bind:class="{ 'dark': darkMode }" lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -18,6 +14,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
 
     <!-- Livewire Styles -->
@@ -40,7 +37,7 @@
     profile: false,
     notifica: false,
     isSideMenuOpen: false
-    
+
 }">
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': sidebar }">
         <!-- Desktop sidebar -->
@@ -83,8 +80,17 @@
         </div>
     </div>
     @livewireScripts
+    <script src="
+    https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+    "></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <x-livewire-alert::scripts />
 </body>
+<script>
+    $(document).ready(function() {
+        $('.multi-select').select2();
+    });
+</script>
 
 </html>

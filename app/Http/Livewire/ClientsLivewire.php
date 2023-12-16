@@ -15,7 +15,7 @@ class ClientsLivewire extends Component
     public function render()
     {
         return view('livewire.clients-livewire', [
-            'users' => User::where('name', 'like', '%'.$this->search.'%')->orWhere('email', 'like', '%'.$this->search.'%')->orWhere('id', 'like', '%'.$this->search.'%')->orWhere('phone', 'like', '%'.$this->search.'%')->paginate(50)
+            'users' => User::where('name', 'like', '%'.$this->search.'%')->orWhere('name', 'like', '%'.$this->search.'%')->orWhere('id', 'like', '%'.$this->search.'%')->orWhere('phone', 'like', '%'.$this->search.'%')->paginate(50)
         ]);
     }
 
